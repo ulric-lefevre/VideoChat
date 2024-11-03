@@ -1,0 +1,27 @@
+services:
+  client:
+    build:
+      context: ./chat-client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:443"
+    depends_on:
+      - server
+    volumes:
+      - ./certs:/etc/ssl/certs
+    environment:
+      - HTTPS=true
+      - SSL_CRT_FILE=/etc/ssl/certs/localhost.pem
+      - SSL_KEY_FILE=/etc/ssl/certs/localhost-key.pem
+
+  server:
+    build:
+      context: ./signaling-server
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./certs:/etc/ssl/certs
+    environment:
+      - SSL_CRT_FILE=/etc/ssl/certs/localhost.pem
+      - SSL_KEY_FILE=/etc/ssl/certs/localhost-key.pem

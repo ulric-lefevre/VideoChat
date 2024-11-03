@@ -1,0 +1,23 @@
+.video-chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.remote-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #000;
+}
+
+.local-video {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 24rem;
+    height: 16rem;
+    object-fit: cover;
+    background-color: #444;
+}
